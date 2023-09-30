@@ -1,0 +1,38 @@
+.filters-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-flow: 6;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.table-actions {
+    display: flex;
+    gap: 1rem;
+
+    >span {
+        font-size: 22px;
+        cursor: pointer;
+    }
+}
+
+.delete-button {
+    color: #dd0031;
+}
+
+.edit-button {
+    font-size: 22px;
+    color: #0d47a1;
+}
+
+.table-container {
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.tags-container {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}

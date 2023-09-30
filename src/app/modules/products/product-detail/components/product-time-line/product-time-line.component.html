@@ -1,0 +1,20 @@
+<div>
+    <h3>Historial de cambios</h3>
+    <div class="timeline-container">
+        <nz-timeline *ngIf="dataTimeLine.length">
+            <nz-timeline-item *ngFor="let timeline of dataTimeLine" [nzLabel]="formatDate(timeline.timestamp)">
+                <div class="timeline-item">
+                    <span class="timeline-title">
+                        {{productActions[timeline.action]}}
+                    </span>
+                    <span>
+                        Precio: {{timeline.price}}
+                    </span>
+                    <span>
+                        Cantidad: {{timeline.quantity}}
+                    </span>
+                </div>
+            </nz-timeline-item>
+        </nz-timeline>
+    </div>
+</div>

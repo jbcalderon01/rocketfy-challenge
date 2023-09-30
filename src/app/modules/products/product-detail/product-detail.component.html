@@ -1,0 +1,96 @@
+<div>
+    <div routerLink="/products" class="button-back">
+        <span nz-icon nzType="left" nzTheme="outline"></span>
+        <h1>Regresar</h1>
+    </div>
+    <div class="product-info-container">
+        <div>
+            <img (error)="onErrorImage($event)" class="product-image-container"
+                [src]="imageUrl || imageSrcPlaceholder" />
+        </div>
+        <div>
+            <h2>Información del producto</h2>
+            <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+                <div class="product-fields">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">Enlace de image</label>
+                            <input placeholder="Enlace de image" formControlName="image_url" nz-input />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">Nombre</label>
+                            <input placeholder="Nombre" formControlName="name" nz-input />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">SKU</label>
+                            <input placeholder="SKU" formControlName="sku" nz-input />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">Cantidad</label>
+                            <input type="number" placeholder="Cantidad" formControlName="quantity" nz-input />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">Precio</label>
+                            <input type="number" placeholder="Precio" formControlName="price" nz-input />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control>
+                            <label class="input-label">Etiquetas</label>
+                            <nz-select [nzDropdownStyle]="{display: 'none'}" formControlName="tags" nzMode="tags"
+                                nzPlaceHolder="Escribir etiquetas">
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item class="input-description">
+                        <nz-form-control>
+                            <label class="input-label">Descripción</label>
+                            <textarea placeholder="Descripción" formControlName="description" nz-input></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div class="actions-container">
+                    <div>
+                        <button type="button" [disabled]="isLoading" (click)="showModalProductTimeline()" nz-button
+                            nzType="primary">
+                            <span nz-icon nzType="history" nzTheme="outline"></span>
+                            <span>
+                                Ver historial de cambios
+                            </span>
+                        </button>
+                    </div>
+                    <div class="actions-container">
+                        <button type="button" [disabled]="isLoading" (click)="handleClickDeleteProduct()" nz-button
+                            nzDanger nzType="primary">
+                            <span nz-icon nzType="delete" nzTheme="outline"></span>
+                            <span>
+                                Eliminar
+                            </span>
+                        </button>
+                        <button [nzLoading]="isLoading" nz-button nzType="primary">
+                            <span nz-icon nzType="save" nzTheme="outline"></span>
+                            <span>
+                                Guardar cambios
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <nz-modal [nzStyle]="{ top: '20px' }" (nzOnCancel)="handleModalProductTimeLine()"
+        [(nzVisible)]="isOpenModalProductTimeLine" [nzFooter]="null" nzTitle="">
+        <ng-container *nzModalContent>
+            <app-product-time-line [dataChangeHistory]="dataProductHistoryChange"
+                [isLoading]="isLoadingChangeHistory"></app-product-time-line>
+        </ng-container>
+    </nz-modal>
+</div>

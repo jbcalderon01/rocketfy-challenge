@@ -1,0 +1,17 @@
+.form-container {
+    display: grid;
+}
+
+.image-container {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+}

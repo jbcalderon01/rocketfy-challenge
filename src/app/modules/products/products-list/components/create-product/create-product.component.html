@@ -1,0 +1,51 @@
+<div>
+    <div>
+        <h1>Crear producto</h1>
+    </div>
+    <form [formGroup]="productForm" (ngSubmit)="handleSubmit()">
+        <div class="form-container">
+            <img (error)="onErrorImage($event)" class="image-container" [src]="imageUrl || imageSrcPlaceholder" />
+            <nz-form-item>
+                <nz-form-control>
+                    <input placeholder="Enlace de image" formControlName="image_url" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <input placeholder="Nombre" formControlName="name" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <input placeholder="SKU" formControlName="sku" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <input type="number" placeholder="Cantidad" formControlName="quantity" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <input type="number" placeholder="Precio" formControlName="price" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-select [nzDropdownStyle]="{display: 'none'}" formControlName="tags" nzMode="tags"
+                        nzPlaceHolder="Escribir etiquetas">
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <input placeholder="Descripción" formControlName="description" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div class="actions-container">
+            <button (click)="handleCancel()" [disabled]="isLoading" type="button" nz-button>Cancelar</button>
+            <button nz-button nzType="primary" [nzLoading]="isLoading">Crear producto</button>
+        </div>
+    </form>
+</div>
